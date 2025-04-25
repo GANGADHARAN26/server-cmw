@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Job = require('../models/Job');
 
-// Create a new job
 router.post('/', async (req, res) => {
   try {
     const job = new Job(req.body);
@@ -13,7 +12,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// Get all jobs with pagination
 router.get('/', async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
@@ -38,7 +36,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// Get a single job
 router.get('/:id', async (req, res) => {
   try {
     const job = await Job.findById(req.params.id);
@@ -51,7 +48,6 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-// Update a job
 router.put('/:id', async (req, res) => {
   try {
     const job = await Job.findByIdAndUpdate(
@@ -68,7 +64,6 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// Delete a job
 router.delete('/:id', async (req, res) => {
   try {
     const job = await Job.findByIdAndDelete(req.params.id);
